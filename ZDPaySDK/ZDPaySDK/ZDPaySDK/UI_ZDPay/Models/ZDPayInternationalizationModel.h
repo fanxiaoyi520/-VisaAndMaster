@@ -144,7 +144,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic ,copy)NSString *Please_select_a_valid_year;//请选择有效期年份
 @property (nonatomic ,copy)NSString *Please_fill_in_the_CVC;//请填写CVC
 @property (nonatomic ,copy)NSString *CVC_is_not_less_than_3_digits;//CVC不少于3位
-
+@property (nonatomic ,copy)NSString *hint;//提示
+@property (nonatomic ,copy)NSString *qingyunxushiyongshexiangshebei;
+@property (nonatomic ,copy)NSString *saomiaoyinhangka;
+@property (nonatomic ,copy)NSString *saomiaoshenfenzheng;
+@property (nonatomic ,copy)NSString *shifoujiebangyinhangka;
+@property (nonatomic ,copy)NSString *credit_card;
 @end
 
 NS_ASSUME_NONNULL_END

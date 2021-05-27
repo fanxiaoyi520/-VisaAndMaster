@@ -79,11 +79,11 @@ typedef void(^UntyingResultBlock) (id _Nonnull responseObject);
     [self.topNavBar addBankCardBTnTitle:self.untyingStr btnImage:self.bindingStr BankJumpBlock:^(UIButton * _Nonnull sender) {
         @StrongObj(self)
         if (self.walletType == WalletType_Untying) {
-            UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"提示" message:@"是否确认解绑银行卡？" preferredStyle:UIAlertControllerStyleAlert];
-                    UIAlertAction * cancelAc = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:[[ZDPayInternationalizationModel sharedSingleten] getModelData].hint message:[[ZDPayInternationalizationModel sharedSingleten] getModelData].shifoujiebangyinhangka preferredStyle:UIAlertControllerStyleAlert];
+                    UIAlertAction * cancelAc = [UIAlertAction actionWithTitle:[[ZDPayInternationalizationModel sharedSingleten] getModelData].cancel style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
                         //点击取消要执行的代码
                     }];
-                    UIAlertAction *comfirmAc = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    UIAlertAction *comfirmAc = [UIAlertAction actionWithTitle:[[ZDPayInternationalizationModel sharedSingleten] getModelData].confirm style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                         [self getDataFromNetWorkingUntying];
             }];
             [alertVC addAction:cancelAc];

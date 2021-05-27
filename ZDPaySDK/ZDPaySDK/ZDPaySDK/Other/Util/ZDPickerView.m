@@ -6,6 +6,7 @@
 //  Copyright © 2018年 中付支付. All rights reserved.
 //
 //获取屏幕 宽度、高度
+#import "ZDPayFuncTool.h"
 #define ZFSCREEN [UIScreen mainScreen].bounds
 #define SCREEN_WIDTH ([UIScreen mainScreen].bounds.size.width)
 #define SCREEN_HEIGHT ([UIScreen mainScreen].bounds.size.height)
@@ -68,7 +69,7 @@
     UIButton *cancelBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 80, 44)];;
     cancelBtn.backgroundColor = [UIColor clearColor];
     [cancelBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-    [cancelBtn setTitle:NSLocalizedString(@"取消", nil) forState:UIControlStateNormal];
+    [cancelBtn setTitle:[[ZDPayInternationalizationModel sharedSingleten] getModelData].cancel forState:UIControlStateNormal];
     cancelBtn.titleLabel.font = [UIFont systemFontOfSize:16.0];
     [cancelBtn addTarget:self action:@selector(cancelBtnClicked) forControlEvents:UIControlEventTouchUpInside];
     [_contentView addSubview:cancelBtn];
@@ -85,7 +86,7 @@
     UIButton *ctBtn = [[UIButton alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-80, 0, 80, 44)];;
     ctBtn.backgroundColor = [UIColor clearColor];
     [ctBtn setTitleColor:MainThemeColor forState:UIControlStateNormal];
-    [ctBtn setTitle:NSLocalizedString(@"确定", nil) forState:UIControlStateNormal];
+    [ctBtn setTitle:[[ZDPayInternationalizationModel sharedSingleten] getModelData].confirm forState:UIControlStateNormal];
     ctBtn.titleLabel.font = [UIFont systemFontOfSize:16.0];
     [ctBtn addTarget:self action:@selector(ctBtnClicked) forControlEvents:UIControlEventTouchUpInside];
     [_contentView addSubview:ctBtn];

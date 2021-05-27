@@ -310,7 +310,7 @@ typedef void (^WKWebViewBlock)( id _Nullable message,BOOL paySuccess);
     self.headImageView1.image = [UIImage imageNamed:@"icon_mastercard_line"];
     
     CGRect nameLabRect = [ZDPayFuncTool getStringWidthAndHeightWithStr:[[ZDPayInternationalizationModel sharedSingleten] getModelData].credit_cards_accepted withFont:[UIFont boldSystemFontOfSize:16]];
-    self.nameLab.frame = CGRectMake(self.headImageView1.right+4, 17, nameLabRect.size.width, 16);
+    self.nameLab.frame = CGRectMake(self.headImageView1.right+4, 17, self.width, 16);
     self.nameLab.text = model[mySetion];
     
     CGRect tipsLabRect = [ZDPayFuncTool getStringWidthAndHeightWithStr:[NSString stringWithFormat:@"%@ >",[[ZDPayInternationalizationModel sharedSingleten] getModelData].Add_new_credit_card_payments] withFont:ZD_Fout_Medium(14)];
@@ -329,7 +329,7 @@ typedef void (^WKWebViewBlock)( id _Nullable message,BOOL paySuccess);
         self.headImageView.frame = CGRectMake(20, 15, 62, 20);
         self.headImageView.image = [UIImage imageNamed:@"icon_yinlianguoji"];
         
-        self.nameLab.frame = CGRectMake(self.headImageView.right+4, 17, nameLabRect.size.width, 16);
+        self.nameLab.frame = CGRectMake(self.headImageView.right+4, 17, self.width, 16);
     }
 }
 @end
@@ -701,7 +701,8 @@ typedef void (^WKWebViewBlock)( id _Nullable message,BOOL paySuccess);
     [self.headerView layoutAndLoadData:model countDownForLab:_countDownForLab];
     UIView *view = [UIView new];
 //    if (section == 2) {
-    NSArray *array = @[@"银行卡支付",[[ZDPayInternationalizationModel sharedSingleten] getModelData].APP_to_pay,[[ZDPayInternationalizationModel sharedSingleten] getModelData].credit_cards_accepted];
+    
+    NSArray *array = @[[[ZDPayInternationalizationModel sharedSingleten] getModelData].PAY_BY_UNIONPAY_CARD,[[ZDPayInternationalizationModel sharedSingleten] getModelData].APP_to_pay,[[ZDPayInternationalizationModel sharedSingleten] getModelData].credit_cards_accepted];
     ZDThirdHeaderView *bgView = [ZDThirdHeaderView new];
     bgView.backgroundColor = [UIColor whiteColor];
     bgView.frame = CGRectMake(0, 0, _payTableView.width, 51);

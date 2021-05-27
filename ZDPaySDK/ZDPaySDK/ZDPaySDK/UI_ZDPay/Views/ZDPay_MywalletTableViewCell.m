@@ -86,7 +86,12 @@ typedef void (^BalanceBlock)(ZDPay_OrderBankListTokenModel *model,UIButton *send
     } else {
         sender.selected = YES;
         [self.isHiddenBtn setImage:REImageName(@"icon_yingcang") forState:UIControlStateNormal];
-        self.cardNumberLab.text = [NSString stringWithFormat:@"**** **** **** %@",self.bankModel.cardNum];
+
+        if ([self.bankModel.cardType isEqualToString:[[ZDPayInternationalizationModel sharedSingleten] getModelData].credit_card]) {
+            self.cardNumberLab.text = self.bankModel.cardNum;
+        } else {
+            self.cardNumberLab.text = [NSString stringWithFormat:@"**** **** **** %@",self.bankModel.cardNum];
+        }
     }
     
     if ([self.bankModel.bankName isEqualToString:@"Sinopay"] || [self.bankModel.bankName isEqualToString:@"sinopay"] || [self.bankModel.bankName isEqualToString:@"SinoCard"]) {
@@ -131,7 +136,11 @@ typedef void (^BalanceBlock)(ZDPay_OrderBankListTokenModel *model,UIButton *send
     }
     CGRect cardNumberRect = [ZDPayFuncTool getStringWidthAndHeightWithStr:str1 withFont:ZD_Fout_Medium(18)];
     self.cardNumberLab.frame = CGRectMake(48, 68, cardNumberRect.size.width, 18);
-    self.cardNumberLab.text = [NSString stringWithFormat:@"**** **** **** %@",self.bankModel.cardNum];
+    if ([self.bankModel.cardType isEqualToString:[[ZDPayInternationalizationModel sharedSingleten] getModelData].credit_card]) {
+        self.cardNumberLab.text = self.bankModel.cardNum;
+    } else {
+        self.cardNumberLab.text = [NSString stringWithFormat:@"**** **** **** %@",self.bankModel.cardNum];
+    }
 
     self.isHiddenBtn.frame = CGRectMake(self.width-57, 33, 57, 79);
     

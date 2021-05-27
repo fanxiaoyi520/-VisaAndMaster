@@ -9,6 +9,8 @@
 #import "JYBDBankCardVC.h"
 #import "JYBDNewFormeScaningV.h"
 #import "UIAlertController+IDCardExtend.h"
+#import "ZDPayFuncTool.h"
+
 @interface JYBDBankCardVC ()
 
 @property (nonatomic, strong)JYBDScanCardManage *cameraManager;
@@ -86,12 +88,12 @@
 
 - (void)showAlert
 {
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action)
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:[[ZDPayInternationalizationModel sharedSingleten] getModelData].confirm style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action)
                                {
                                    NSLog(@"打开相机失败");
                                    [self close];
                                }];
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"请设置允许使用摄像设备" okAction:okAction cancelAction:nil];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:[[ZDPayInternationalizationModel sharedSingleten] getModelData].hint message:[[ZDPayInternationalizationModel sharedSingleten] getModelData].qingyunxushiyongshexiangshebei okAction:okAction cancelAction:nil];
     [self presentViewController:alertController animated:YES completion:nil];
 }
 
